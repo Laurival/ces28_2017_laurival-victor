@@ -1,5 +1,7 @@
 package lab01;
 
+// Processo 9 - aplicação que mostra várias moedas em um MoneyBag
+
 public class Lab01 {
 
 	public static void main(String[] args) {

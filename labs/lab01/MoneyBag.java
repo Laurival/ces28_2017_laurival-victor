@@ -3,6 +3,8 @@ package lab01;
 import java.util.LinkedList;
 import java.util.List;
 
+// Processo 7 - Criar classe MoneyBag
+
 public class MoneyBag {
 
 	private List<Money> _monies = new LinkedList<Money>();
@@ -60,6 +62,7 @@ public class MoneyBag {
 		return result;
 	}
 	
+	// Processo 11 - Acrescentar método em MoneyBag que retorna valor total em BRL (1/3)
 	public int getTotalAmountInBrl() {
 		int amount = 0;
 		for (int i = 0; i < size(); i++) {
