@@ -18,6 +18,7 @@ public class MoneyBagTest {
 	private Money brl60;
 	private Money eur30;
 	private Money chf70;
+	private Money brl100;
 
 	private MoneyBag moneyBag;
 
@@ -29,6 +30,7 @@ public class MoneyBagTest {
 
 		brl40 = new Money(40, brl);
 		brl60 = new Money(60, brl);
+		brl100 = new Money(100, brl);
 		eur30 = new Money(30, eur);
 		chf70 = new Money(70, chf);
 
@@ -77,12 +79,10 @@ public class MoneyBagTest {
 
 	@Test
 	public void whenAddingMoniesWithEqualCurrencyExpectSum() {
-		Money brl100 = new Money(100, brl);
-
 		moneyBag.add(brl40);
 		moneyBag.add(eur30);
 		moneyBag.add(brl60);
-
+		
 		assertTrue(moneyBag.contains(brl100));
 	}
 
@@ -91,17 +91,18 @@ public class MoneyBagTest {
 		moneyBag.add(brl40);
 		moneyBag.add(eur30);
 		moneyBag.add(chf70);
-		assertEquals(300, moneyBag.getTotalAmountInBrl());
+		assertEquals(300, moneyBag.getAmountInBrl());
 	}
 
 	@Test
 	public void whenEmptyExpectZeroAsTotalAmountInBrl() {
-		assertEquals(0, moneyBag.getTotalAmountInBrl());
+		assertEquals(0, moneyBag.getAmountInBrl());
 	}
 
 	@Test
 	public void whenAddingMoneyInBrlExpectSameMoneyAsTotalAmountInBrl() {
 		moneyBag.add(brl40);
-		assertEquals(40, moneyBag.getTotalAmountInBrl());
+		assertEquals(40, moneyBag.getAmountInBrl());
 	}
+	
 }

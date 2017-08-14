@@ -2,7 +2,7 @@ package lab01;
 
 // Processo 1 - Criar a classe Money
 
-public class Money {
+public class Money implements MoneyInterface {
 
 	private int _amount;
 
@@ -18,24 +18,20 @@ public class Money {
 		return "" + getAmount() + " " + getCurrency();
 	}
 
-	public boolean equals(Object anObject) {
-		if (anObject instanceof Money) {
-			Money aMoney = (Money) anObject;
-			return aMoney.getCurrency().equals(getCurrency()) && getAmount() == aMoney.getAmount();
+	public boolean equals(Object object) {
+		if (object instanceof Money) {
+			Money money = (Money) object;
+			return money.getCurrency().equals(getCurrency()) && getAmount() == money.getAmount();
 		}
 		return false;
 	}
 
-	// Processo 10 - Modificar método add() de Money para retornar MoneyBag ou Money (1/2)
-	public Object add(Money money) {
+	// Processo 10 - Modificar método add() de Money para retornar MoneyBag ou Money
+	// (1/2)
+	public MoneyInterface add(Money money) {
 		if (getCurrency().equals(money.getCurrency())) {
-			// Observação: Quando adicionado um objeto do tipo Money a outro objeto do tipo
-			// Money, da mesma moeda o método add deixa ambos os objetos inalterados e cria
-			// uma nova instância de Money. Isto se assemelha ao comportamento de uma função
-			// add() matemática.
-			// Por exemplo, não expera-se que "5 + 7" redefina o número 5 para o valor 12,
-			// mas sim que retorne um novo valor 12.
-			return new Money(getAmount() + money.getAmount(), getCurrency());
+			setAmount(getAmount() + money.getAmount());
+			return this;
 		} else {
 			MoneyBag moneyBag = new MoneyBag();
 			moneyBag.add(this);
@@ -44,7 +40,8 @@ public class Money {
 		}
 	}
 
-	// Processo 11 - Acrescentar método em MoneyBag que retorna valor total em BRL (3/3)
+	// Processo 11 - Acrescentar método em MoneyBag que retorna valor total em BRL
+	// (3/3)
 	public int getAmountInBrl() {
 		return getAmount() * getCurrency().getValueInBrl();
 	}

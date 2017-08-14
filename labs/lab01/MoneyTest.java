@@ -35,21 +35,22 @@ public class MoneyTest {
 	}
 
 	@Test
-	public void whenAddingValueTo0ReturnsValue() {
-		Money brl0 = new Money(0, brl);
-		Money moneySum = (Money) brl0.add(brl60);
-		assertTrue(moneySum.getAmount() == 60);
+	public void whenAddingValueTo0ExpectValue() {
+		Money money = new Money(0, brl);
+		money.add(brl60);
+		assertTrue(money.getAmount() == 60);
 	}
 
 	// Processo 3 - teste para Money.add(Money money) com assertEquals
 	@Test
-	public void whenAdding0ToValueReturnsValue() {
+	public void whenAdding0ToValueExpectValue() {
 		Money brl0 = new Money(0, brl);
-		Money moneySum = (Money) brl60.add(brl0);
-		assertEquals(60, moneySum.getAmount());
+		brl60.add(brl0);
+		assertEquals(60, brl60.getAmount());
 	}
 
-	// Processo 10 - Modificar método add() de Money para retornar MoneyBag ou Money (2/2)
+	// Processo 10 - Modificar método add() de Money para retornar MoneyBag ou Money
+	// (2/2)
 	@Test
 	public void whenAddingDifferentCurrenciesReturnsMoneyBag() {
 		Object sum = brl40.add(eur30);

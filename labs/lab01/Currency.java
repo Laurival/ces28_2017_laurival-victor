@@ -4,12 +4,16 @@ package lab01;
 
 public class Currency {
 
+	private String _currency;
+	private int _valueInBrl;
+
 	public Currency(String currency) {
 		setCurrency(currency);
-		_valueInBrl = 1; // default value for _valueInBrl, if its not passed in the constructor
+		_valueInBrl = 1; // default value for _valueInBrl, if it is not passed in the constructor
 	}
 
-	// Processo 11 - Acrescentar método em MoneyBag que retorna valor total em BRL (2/3)
+	// Processo 11 - Acrescentar método em MoneyBag que retorna valor total em BRL
+	// (2/3)
 	public Currency(String currency, int valueInBrl) {
 		setCurrency(currency);
 		_valueInBrl = valueInBrl;
@@ -27,14 +31,14 @@ public class Currency {
 		return _currency;
 	}
 
-	public void setCurrency(String _currency) {
-		this._currency = _currency;
+	public void setCurrency(String currency) {
+		this._currency = currency;
 	}
 
-	public boolean equals(Object anObject) {
-		if (anObject instanceof Currency) {
-			Currency aCurrency = (Currency) anObject;
-			return getCurrency().equals(aCurrency.getCurrency());
+	public boolean equals(Object object) {
+		if (object instanceof Currency) {
+			Currency currency = (Currency) object;
+			return getCurrency().equals(currency.getCurrency());
 		}
 		return false;
 	}
@@ -43,6 +47,4 @@ public class Currency {
 		return _currency;
 	}
 
-	private String _currency;
-	private int _valueInBrl;
 }
